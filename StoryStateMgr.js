@@ -1,22 +1,80 @@
 
+export class Story {
+  constructor(text) {
+    // Use \n as the delimiter for simplicity
+    this.isGirlStory = false;
+    this.sentences = text.trim().split('\n').filter(line => {
+      const possKeyVal = line.split('=');
+      if (possKeyVal.length < 2) {
+        return true;
+      }
+      if (possKeyVal['0'] === 'isGirlStory') {
+        this.isGirlStory = true;
+      }
+      return false;
+    }).map(sentence => sentence.trim());
+    console.log(this.sentences)
+    this.wordListsList = this.sentences.map(sentence => sentence.split('|'));
+    this.sentenceLengthsInWords = this.wordListsList.map(wordList => wordList.length);
+    const hash = Math.abs(hashCode(text))
+    if (this.isGirlStory) {
+      this.hue = (hash % 160) + 220;
+    } else {
+      this.hue = (hash % 200) + 20;
+    }
+    this.saturation = (hash % 23) + 50;
+    this.lightness = (hash % 3) + 95;
+  }
+}
+
+export class Cursor {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.storyIdx = 0;
+    this.sentenceIdx = 0;
+    this.wordStartIdx = 0;
+  }
+  clone() {
+    const res = new Cursor();
+    res.storyIdx = this.storyIdx;
+    res.sentenceIdx = this.sentenceIdx;
+    res.wordStartIdx = this.wordStartIdx;
+    return res;
+  }
+}
 export class StoryStateMgr {
   constructor(storyCard) {
     this.storyCard = storyCard;
     this.isBusyReading = false;
+    this.stories = [];
+    this.cursor = new Cursor();
   }
   // Must call this for things to start working
-  loadText(text) {
+  loadStories(arrayOfText, readPhrase = false, readSentence = false, nameReplacements = []) {
     if (this.isBusyReading) {
       return;
     }
-    // Use \n as the delimiter for simplicity
-    this.sentences = text.trim().split('\n').map(sentence => sentence.trim());
-    this.sentenceIdx = 0;
-    this.wordIdx = 0;
-    this.wordListsList = this.sentences.map(sentence => sentence.split(' '));
-    this.sentenceLengthsInWords = this.wordListsList.map(wordList => wordList.length);
-    this.hue = Math.abs(hashCode(text)) % 360;
+    const replaceFunc = text => {
+      if (!readPhrase) {
+        text = text.replaceAll(' ', '|');
+      }
+      if (readSentence) {
+        text = text.replaceAll('|', ' ');
+      }
+      nameReplacements.forEach(mapping => {
+        new RegExp(`$\b{mapping.old}\b`, "i")
+        text = text.replaceAll(mapping.old, mapping.new);
+      });
+      return text;
+    }
+    this.stories = arrayOfText.map(text => new Story(replaceFunc(text)));
+    this.cursor.reset();
     this.renderStoryCard();
+  }
+  getCurrStory() {
+    return this.stories[this.cursor.storyIdx];
   }
 
   // moveToPreviousWord() {
@@ -24,51 +82,60 @@ export class StoryStateMgr {
   //     return false;
   //   }
   // }
+  computeNextCursor() {
+    const cursor = this.cursor.clone();
+    const story = this.getCurrStory();
+    cursor.wordStartIdx += 1;
+    if (cursor.wordStartIdx < story.sentenceLengthsInWords[cursor.sentenceIdx]) {
+      return cursor;
+    }
+    cursor.wordStartIdx = 0;
+    cursor.sentenceIdx += 1;
+    if (cursor.sentenceIdx < story.sentences.length) {
+      return cursor;
+    }
+    cursor.sentenceIdx = 0;
+    // TODO add an option to randomize
+    cursor.storyIdx += 1
+    cursor.storyIdx = cursor.storyIdx % this.stories.length;
+    return cursor;
+  }
   // Returns true if the end is reached.
   moveToNextWord() {
     if (this.isBusyReading) {
       return false;
     }
-    const update = _ => {
-      this.wordIdx += 1;
-      if (this.wordIdx < this.sentenceLengthsInWords[this.sentenceIdx]) {
-        return false;
-      }
-      this.wordIdx = 0;
-      this.sentenceIdx += 1;
-      if (this.sentenceIdx < this.sentences.length) {
-        return false;
-      }
-      this.sentenceIdx = 0;
-      return true;
-    }
-    const endIsReached = update();
+    this.cursor = this.computeNextCursor();
+    // const nextSentenceIsReached = nextCursor.sentenceIdx !== this.cursor.sentenceIdx;
+    // const endIsReached = nextCursor.storyIdx !== this.cursor.storyIdx;
+    this.cursor = nextCursor;
     this.renderStoryCard();
-    return endIsReached;
   }
 
-  // Returns true if the end is reached.
   async readWordAndMoveToNextWord() {
     if (this.isBusyReading) {
       return false;
     }
+    const story = this.getCurrStory();
+    const word = story.wordListsList[this.cursor.sentenceIdx][this.cursor.wordStartIdx];
+    console.log(word);
     this.isBusyReading = true;
-    await utter(this.wordListsList[this.sentenceIdx][this.wordIdx]);
+    await utter(word);
     this.isBusyReading = false;
     // TODO compute before updating so that we can delay moving to the next page
-    const endIsReached = this.moveToNextWord();
-    if (endIsReached) {
-      utter('The end!');
-    }
-    return endIsReached;
+    this.cursor = this.computeNextCursor();
+    console.log(this.cursor)
+    // const nextSentenceIsReached = nextCursor.sentenceIdx !== this.cursor.sentenceIdx;
+    // const endIsReached = nextCursor.storyIdx !== this.cursor.storyIdx;
+    this.renderStoryCard();
   }
 
   renderStoryCard() {
+    const story = this.getCurrStory();
     this.storyCard.render(
-      this.wordListsList[this.sentenceIdx], this.wordIdx,
-      this.sentenceIdx % 2 === 1,
-      this.hue);
-      console.log(this.hue)
+      story.wordListsList[this.cursor.sentenceIdx], this.cursor.wordStartIdx,
+      this.cursor.sentenceIdx % 2 === 1,
+      story.hue, story.saturation, story.lightness);
   }
 }
 
