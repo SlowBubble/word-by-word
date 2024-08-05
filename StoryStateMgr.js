@@ -116,7 +116,7 @@ export class StoryStateMgr {
     const nextSentenceIsReached = nextCursor.sentenceIdx !== this.cursor.sentenceIdx;
     const endIsReached = nextCursor.sentenceIdx === story.sentences.length - 1;
     this.isBusyReading = true;
-    await utter(word, nextSentenceIsReached ? 500 : 0);
+    await utter(word, nextSentenceIsReached ? 1000 : 0);
     // TODO compute before updating so that we can delay moving to the next page
     this.cursor = nextCursor;
     await this.renderStoryCard(endIsReached, nextSentenceIsReached);

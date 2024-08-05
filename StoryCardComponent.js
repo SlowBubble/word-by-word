@@ -15,7 +15,7 @@ export class StoryCard extends HTMLElement {
       div.classList.toggle('hide');
       window.setTimeout(_ => {
         resolve();
-      }, 500);
+      }, 100);
     });
   }
 }
@@ -26,7 +26,7 @@ const fadeInCss = `
     to { opacity: 1; }
 }
 #story-card-content {
-  animation: fadein 0.5s ease-in;
+  animation: fadein 0.1s;
 }
 `;
 
@@ -45,7 +45,7 @@ const genHtml = (sentenceHtml, putAtCenter, putAtBottom, isNewSentence=true, hue
 ${isNewSentence ? fadeInCss : ''}
 .hide {
   opacity: 0;
-  transition: all 0.5s;
+  transition: all 0.1s;
 }
 </style>
 <div id='story-card'>
