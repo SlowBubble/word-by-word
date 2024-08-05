@@ -116,19 +116,23 @@ export class StoryStateMgr {
     const nextSentenceIsReached = nextCursor.sentenceIdx !== this.cursor.sentenceIdx;
     const endIsReached = nextCursor.sentenceIdx === story.sentences.length - 1;
     this.isBusyReading = true;
-    await utter(word, nextSentenceIsReached ? 1000 : 0);
-    this.isBusyReading = false;
+    await utter(word, nextSentenceIsReached ? 500 : 0);
     // TODO compute before updating so that we can delay moving to the next page
     this.cursor = nextCursor;
-    this.renderStoryCard(endIsReached);
+    await this.renderStoryCard(endIsReached, nextSentenceIsReached);
+    this.isBusyReading = false;
   }
 
-  renderStoryCard(endIsReached = false) {
+  async renderStoryCard(endIsReached = false, nextSentenceIsReached = false) {
+    if (nextSentenceIsReached) {
+      await this.storyCard.hideContentSlowly();
+    }
     const story = this.getCurrStory();
     this.storyCard.render(
       story.wordListsList[this.cursor.sentenceIdx], this.cursor.wordStartIdx,
       endIsReached,
       this.cursor.sentenceIdx % 2 === 1,
+      nextSentenceIsReached,
       story.hue, story.saturation, story.lightness);
   }
 }

@@ -4,17 +4,33 @@ export class StoryCard extends HTMLElement {
     super();
   }
 
-  render(wordList, wordIdx, putAtCenter, putAtBottom = false, hue = 100, saturation = 100, lightness = 100) {
-    console.log(putAtCenter)
+  render(wordList, wordIdx, putAtCenter, putAtBottom = false, isNewSentence = true, hue = 100, saturation = 100, lightness = 100) {
     const annotatedWords = wordList.map((word, idx) => idx === wordIdx ? `<span style='color:red'>${word}</span>` : word);
-    this.innerHTML = genHtml(annotatedWords.join(' '), putAtCenter, putAtBottom, hue, saturation, lightness);
+    this.innerHTML = genHtml(annotatedWords.join(' '), putAtCenter, putAtBottom, isNewSentence, hue, saturation, lightness);
+  }
+
+  async hideContentSlowly() {
+    const div = this.querySelector('#story-card-content');
+    return new Promise(resolve => {
+      div.classList.toggle('hide');
+      window.setTimeout(_ => {
+        resolve();
+      }, 500);
+    });
   }
 }
 
-// 20-220 are boys color
-// 60-100
-// 80-95
-const genHtml = (sentenceHtml, putAtCenter, putAtBottom, hue = 100, saturation = 100, lightness = 100) => `
+const fadeInCss = `
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+#story-card-content {
+  animation: fadein 0.5s ease-in;
+}
+`;
+
+const genHtml = (sentenceHtml, putAtCenter, putAtBottom, isNewSentence=true, hue = 100, saturation = 100, lightness = 100) => `
 <style>
 #story-card {
   display: flex;
@@ -26,9 +42,14 @@ const genHtml = (sentenceHtml, putAtCenter, putAtBottom, hue = 100, saturation =
   font-size: 84px;
   border: solid 2px black;
 }
+${isNewSentence ? fadeInCss : ''}
+.hide {
+  opacity: 0;
+  transition: all 0.5s;
+}
 </style>
 <div id='story-card'>
- <div>${sentenceHtml}</div>
+ <div id='story-card-content'>${sentenceHtml}</div>
 </div>
 `;
 
