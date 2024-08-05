@@ -2,32 +2,8 @@ import { StoryCard } from './StoryCardComponent.js';
 import { StoryStateMgr } from './StoryStateMgr.js'
 import { getUrlParamsMap } from "./url.js";
 import { sanitizeName } from "./sanitizeName.js";
+import { stories } from './stories.js';
 
-
-const stories = [
-`
-Jacob loves|his scooter.
-He rides the scooter|to the schoolyard.
-He rides the scooter|around the schoolyard.
-And he rides the scooter|home.
-The end!
-`,
-`
-isGirlStory=1
-Mommy gives Emma|a puppet.
-Emma calls the puppet|Mr. Lion.
-Jacob hugs Mr. Lion.
-Daddy puts Mr. Lion|into the toy box.
-The end!
-`,
-`
-Jacob climbs up|the ladder.
-Emma climbs up|the helix.
-Jacob goes down|the slide.
-Emma follows Jacob|down the slide.
-The end!
-`
-];
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -38,6 +14,7 @@ function main() {
   const nameReplacements = [];
   let readPhrase = false;
   let readSentence = false;
+  let shuffleStories = false;
   paramsMap.forEach((value, key) => {
     const possName = sanitizeName(value);
     if (!possName || !key) {
@@ -48,6 +25,9 @@ function main() {
     }
     if (key === 'read_sentence') {
       readSentence = true;
+    }
+    if (key === 'shuffle_stories') {
+      shuffleStories = true;
     }
     nameReplacements.push({
       'old': key,
@@ -63,6 +43,9 @@ function main() {
   const storyCard = new StoryCard();
   document.body.appendChild(storyCard);
   const storyStateMgr = new StoryStateMgr(storyCard);
+  if (shuffleStories) {
+    shuffleArray(stories);
+  }
   storyStateMgr.loadStories(stories, readPhrase, readSentence, nameReplacements);
 
   setupKeyboardControl(storyStateMgr);
@@ -74,6 +57,15 @@ function setupKeyboardControl(storyStateMgr) {
       storyStateMgr.readWordAndMoveToNextWord();
     }
   };
+}
+
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
 }
 
 main();

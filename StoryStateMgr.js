@@ -13,7 +13,7 @@ export class Story {
       }
       return false;
     }).map(sentence => sentence.trim());
-    console.log(this.sentences)
+    this.sentences.push('The End.');
     this.wordListsList = this.sentences.map(sentence => sentence.split('|'));
     this.sentenceLengthsInWords = this.wordListsList.map(wordList => wordList.length);
     const hash = Math.abs(hashCode(text))
@@ -77,11 +77,6 @@ export class StoryStateMgr {
     return this.stories[this.cursor.storyIdx];
   }
 
-  // moveToPreviousWord() {
-  //   if (this.isBusyReading) {
-  //     return false;
-  //   }
-  // }
   computeNextCursor() {
     const cursor = this.cursor.clone();
     const story = this.getCurrStory();
@@ -118,15 +113,14 @@ export class StoryStateMgr {
     }
     const story = this.getCurrStory();
     const word = story.wordListsList[this.cursor.sentenceIdx][this.cursor.wordStartIdx];
-    console.log(word);
+    const nextCursor = this.computeNextCursor();
+    const nextSentenceIsReached = nextCursor.sentenceIdx !== this.cursor.sentenceIdx;
     this.isBusyReading = true;
-    await utter(word);
+    await utter(word, nextSentenceIsReached ? 1000 : 0);
     this.isBusyReading = false;
     // TODO compute before updating so that we can delay moving to the next page
-    this.cursor = this.computeNextCursor();
-    console.log(this.cursor)
-    // const nextSentenceIsReached = nextCursor.sentenceIdx !== this.cursor.sentenceIdx;
     // const endIsReached = nextCursor.storyIdx !== this.cursor.storyIdx;
+    this.cursor = nextCursor;
     this.renderStoryCard();
   }
 
@@ -139,12 +133,14 @@ export class StoryStateMgr {
   }
 }
 
-async function utter(sentence, rate = 0.6) {
+async function utter(sentence, delayMs = 0, rate = 0.4) {
   return new Promise(resolve => {
     const speechSynthesisUtterance = new SpeechSynthesisUtterance(sentence);
     speechSynthesisUtterance.rate = rate;
     speechSynthesisUtterance.onend = function(evt) {
-      resolve();
+      window.setTimeout(_ => {
+        resolve();
+      }, delayMs);
     }
     window.speechSynthesis.speak(speechSynthesisUtterance);
   });
