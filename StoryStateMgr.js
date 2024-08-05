@@ -13,7 +13,7 @@ export class Story {
       }
       return false;
     }).map(sentence => sentence.trim());
-    this.sentences.push('The End.');
+    this.sentences.push('The End');
     this.wordListsList = this.sentences.map(sentence => sentence.split('|'));
     this.sentenceLengthsInWords = this.wordListsList.map(wordList => wordList.length);
     const hash = Math.abs(hashCode(text))
@@ -90,7 +90,6 @@ export class StoryStateMgr {
       return cursor;
     }
     cursor.sentenceIdx = 0;
-    // TODO add an option to randomize
     cursor.storyIdx += 1
     cursor.storyIdx = cursor.storyIdx % this.stories.length;
     return cursor;
@@ -115,19 +114,20 @@ export class StoryStateMgr {
     const word = story.wordListsList[this.cursor.sentenceIdx][this.cursor.wordStartIdx];
     const nextCursor = this.computeNextCursor();
     const nextSentenceIsReached = nextCursor.sentenceIdx !== this.cursor.sentenceIdx;
+    const endIsReached = nextCursor.sentenceIdx === story.sentences.length - 1;
     this.isBusyReading = true;
     await utter(word, nextSentenceIsReached ? 1000 : 0);
     this.isBusyReading = false;
     // TODO compute before updating so that we can delay moving to the next page
-    // const endIsReached = nextCursor.storyIdx !== this.cursor.storyIdx;
     this.cursor = nextCursor;
-    this.renderStoryCard();
+    this.renderStoryCard(endIsReached);
   }
 
-  renderStoryCard() {
+  renderStoryCard(endIsReached = false) {
     const story = this.getCurrStory();
     this.storyCard.render(
       story.wordListsList[this.cursor.sentenceIdx], this.cursor.wordStartIdx,
+      endIsReached,
       this.cursor.sentenceIdx % 2 === 1,
       story.hue, story.saturation, story.lightness);
   }
