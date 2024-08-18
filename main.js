@@ -15,6 +15,7 @@ function main() {
   let readPhrase = false;
   let readSentence = false;
   let shuffleStories = false;
+  let startIndex = 0;
   paramsMap.forEach((value, key) => {
     const possName = sanitizeName(value);
     if (!possName || !key) {
@@ -28,6 +29,12 @@ function main() {
     }
     if (key === 'shuffle_stories') {
       shuffleStories = true;
+    }
+    if (key === 'start_index') {
+      const possibleInt = parseInt(value);
+      if (!isNaN(possibleInt)) {
+        startIndex = possibleInt;
+      }
     }
     nameReplacements.push({
       'old': key,
@@ -43,10 +50,15 @@ function main() {
   const storyCard = new StoryCard();
   document.body.appendChild(storyCard);
   const storyStateMgr = new StoryStateMgr(storyCard);
-  if (shuffleStories) {
-    shuffleArray(stories);
+
+  let storiesClone = [...stories];
+  if (startIndex) {
+    storiesClone = stories.slice(startIndex).concat(stories.slice(0, startIndex));
   }
-  storyStateMgr.loadStories(stories, readPhrase, readSentence, nameReplacements);
+  if (shuffleStories) {
+    shuffleArray(storiesClone);
+  }
+  storyStateMgr.loadStories(storiesClone, readPhrase, readSentence, nameReplacements);
 
   setupKeyboardControl(storyStateMgr);
 }

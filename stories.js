@@ -38,5 +38,29 @@ Daddy takes Emma|to the cafe|by scooter.
 Mommy takes Jacob|to the cafe|by bike.
 Emma and Jacob|eat some eggs.
 Mommy and Daddy|eat some salad.
+`,
+`
+It is raining.
+Jacob wants to|go outside.
+Daddy says no.
+Jacob starts to cry.
+`,
+`
+Emma and Daddy|ride the scooter.
+Jacob and Mommy|ride the bike.
+They meet|at Harvard Yard.
+They ride|on the see-saw.
+`,
+`
+Jacob sees a dinosaur|on the park bench.
+Emma picks up|the dinosaur.
+Jacob climbs up|the ladder.
+Emma gives the dinosaur|to Jacob.
+`,
+`
+Emma and Jacob|visit Ellie and Luke.
+They play with|Ellie's dolls|and Luke's dinosaurs.
+They eat|some mooncakes|and some ice cream.
+They say goodbye|to Ellie and Luke,|and they ride the T|home.
 `
 ];
