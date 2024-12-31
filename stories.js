@@ -66,7 +66,7 @@ They say goodbye|to Ellie and Luke,|and they ride the T|home.
 `
 Mommy and Emma|ride the T|to the cafe.
 Daddy and Jacob|ride the bike|to the cafe.
-Uncle Keanu and hist family|drive to the cafe.
+Uncle Keanu and his family|drive to the cafe.
 They all arrive at the cafe|at the same time!
 `,
 `
