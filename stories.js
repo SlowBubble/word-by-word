@@ -62,5 +62,17 @@ Emma and Jacob|visit Ellie and Luke.
 They play with|Ellie's dolls|and Luke's dinosaurs.
 They eat|some mooncakes|and some ice cream.
 They say goodbye|to Ellie and Luke,|and they ride the T|home.
+`,
 `
+Mommy and Emma|ride the T|to the cafe.
+Daddy and Jacob|ride the bike|to the cafe.
+Uncle Keanu and hist family|drive to the cafe.
+They all arrive at the cafe|at the same time!
+`,
+`
+Ellie and Luke|visit Emma and Jacob.
+They eat lunch|at the cafe.
+They take a walk|in the garden.
+And they play|in the game room.
+`,
 ];
