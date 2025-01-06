@@ -64,6 +64,7 @@ They eat|some mooncakes|and some ice cream.
 They say goodbye|to Ellie and Luke,|and they ride the T|home.
 `,
 `
+isGirlStory=1
 Mommy and Emma|ride the T|to the cafe.
 Daddy and Jacob|ride the bike|to the cafe.
 Uncle Keanu and his family|drive to the cafe.
@@ -74,5 +75,12 @@ Ellie and Luke|visit Emma and Jacob.
 They eat lunch|at the cafe.
 They take a walk|in the garden.
 And they play|in the game room.
+`,
+`
+isGirlStory=1
+Autie Sophia|visits Emmy and Jason.
+She gives Jacob|an apple.
+She gives Emma|an orange.
+Emma says thank you.
 `,
 ];
