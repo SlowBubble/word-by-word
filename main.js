@@ -69,6 +69,10 @@ function setupKeyboardControl(storyStateMgr) {
       storyStateMgr.readWordAndMoveToNextWord();
     } else if (evt.key == "ArrowLeft") {
       storyStateMgr.moveToPreviousWord();
+    } else if (evt.key == "n") {
+      storyStateMgr.moveToNextStory();
+    } else if (evt.key == "p") {
+      storyStateMgr.moveToPreviousStory();
     }
   };
 }

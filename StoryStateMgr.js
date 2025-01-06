@@ -163,6 +163,26 @@ export class StoryStateMgr {
       this.cursor.sentenceIdx % 2 === 1,
       story.hue, story.saturation, story.lightness);
   }
+
+  moveToNextStory() {
+    if (this.isBusyReading) {
+      return;
+    }
+    this.cursor.storyIdx = (this.cursor.storyIdx + 1) % this.stories.length;
+    this.cursor.sentenceIdx = 0;
+    this.cursor.wordStartIdx = 0;
+    this.renderStoryCard();
+  }
+
+  moveToPreviousStory() {
+    if (this.isBusyReading) {
+      return;
+    }
+    this.cursor.storyIdx = (this.cursor.storyIdx - 1 + this.stories.length) % this.stories.length;
+    this.cursor.sentenceIdx = 0;
+    this.cursor.wordStartIdx = 0;
+    this.renderStoryCard();
+  }
 }
 
 async function utter(sentence, delayMs = 0, rate = 0.4) {
