@@ -5,7 +5,6 @@ export class StoryCard extends HTMLElement {
   }
 
   render(wordList, wordIdx, putAtCenter, putAtBottom = false, hue = 100, saturation = 100, lightness = 100) {
-    console.log(putAtCenter)
     const annotatedWords = wordList.map((word, idx) => idx === wordIdx ? `<span style='color:red'>${word}</span>` : word);
     this.innerHTML = genHtml(annotatedWords.join(' '), putAtCenter, putAtBottom, hue, saturation, lightness);
   }

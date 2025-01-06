@@ -1,4 +1,3 @@
-
 export class Story {
   constructor(text) {
     // Use \n as the delimiter for simplicity
@@ -94,7 +93,32 @@ export class StoryStateMgr {
     cursor.storyIdx = cursor.storyIdx % this.stories.length;
     return cursor;
   }
-  // Returns true if the end is reached.
+
+  computePreviousCursor() {
+    const cursor = this.cursor.clone();
+    if (cursor.wordStartIdx > 0) {
+      cursor.wordStartIdx -= 1;
+      return cursor;
+    }
+    
+    if (cursor.sentenceIdx > 0) {
+      cursor.sentenceIdx -= 1;
+      const story = this.getCurrStory();
+      cursor.wordStartIdx = story.sentenceLengthsInWords[cursor.sentenceIdx] - 1;
+      return cursor;
+    }
+    
+    if (cursor.storyIdx > 0) {
+      cursor.storyIdx -= 1;
+      const story = this.stories[cursor.storyIdx];
+      cursor.sentenceIdx = story.sentences.length - 1;
+      cursor.wordStartIdx = story.sentenceLengthsInWords[cursor.sentenceIdx] - 1;
+      return cursor;
+    }
+    
+    return cursor;
+  }
+
   moveToNextWord() {
     if (this.isBusyReading) {
       return false;
@@ -103,6 +127,14 @@ export class StoryStateMgr {
     // const nextSentenceIsReached = nextCursor.sentenceIdx !== this.cursor.sentenceIdx;
     // const endIsReached = nextCursor.storyIdx !== this.cursor.storyIdx;
     this.cursor = nextCursor;
+    this.renderStoryCard();
+  }
+
+  moveToPreviousWord() {
+    if (this.isBusyReading) {
+      return false;
+    }
+    this.cursor = this.computePreviousCursor();
     this.renderStoryCard();
   }
 
