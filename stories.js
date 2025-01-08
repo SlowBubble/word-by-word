@@ -68,7 +68,7 @@ isGirlStory=1
 Mommy and Emma|ride the T|to the cafe.
 Daddy and Jacob|ride the bike|to the cafe.
 Uncle Keanu and his family|drive to the cafe.
-They all arrive at the cafe|at the same time!
+They all|arrive at the cafe|at the same time!
 `,
 `
 Ellie and Luke|visit Emma and Jacob.
@@ -78,9 +78,9 @@ And they play|in the game room.
 `,
 `
 isGirlStory=1
-Autie Sophia|visits Emmy and Jason.
+Auntie Sophia|visits Emmy and Jason.
 She gives Jacob|an apple.
 She gives Emma|an orange.
-Emma says thank you.
+Emma says|thank you.
 `,
 ];
