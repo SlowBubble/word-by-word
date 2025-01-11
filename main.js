@@ -64,7 +64,7 @@ function main() {
 }
 
 function setupKeyboardControl(storyStateMgr) {
-  document.body.onkeydown = evt => {
+  document.body.onkeyup = evt => {
     if (evt.key == " ") {
       storyStateMgr.readWordAndMoveToNextWord();
     } else if (evt.key == "ArrowLeft") {

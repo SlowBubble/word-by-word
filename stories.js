@@ -83,4 +83,17 @@ She gives Jacob|an apple.
 She gives Emma|an orange.
 Emma says|thank you.
 `,
+`
+Daddy gives Emma and Jacob|some puzzles.
+They look at|the animals|in the puzzles.
+They play with|the puzzles.
+They give the puzzles| back to Daddy.
+`,
+`
+isGirlStory=1
+Daddy takes Emma|to school.
+Emma says goodbye|to Daddy.
+Emma says hello|to her teachers.
+Emma says hello|to her friends.
+`,
 ];
