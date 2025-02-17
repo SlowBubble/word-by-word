@@ -106,7 +106,7 @@ Jacob plays with|the elephant puzzle.
 isGirlStory=1
 Emma and Jacob|play the piano.
 Emma likes to|listen to "ABCs".
-Jason likes to listen to|"Twinkle, Twinkle, little star".
+Jacob likes to listen to|"Twinkle, Twinkle, little star".
 They also like to|listen to the metronome.
 `,
 ];
