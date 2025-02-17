@@ -109,4 +109,10 @@ Emma likes to|listen to "ABCs".
 Jacob likes to listen to|"Twinkle, Twinkle, little star".
 They also like to|listen to the metronome.
 `,
+`
+Emma and Jacob|go to the playground.
+They see a pony|in the playground.
+They pat the pony.
+They say goodbye|to the pony.
+`,
 ];
