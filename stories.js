@@ -96,4 +96,17 @@ Emma says goodbye|to Daddy.
 Emma says hello|to her teachers.
 Emma says hello|to her friends.
 `,
+`
+Emma plays with|the octopus puzzle.
+Jacob plays with|the seahorse puzzle.
+Emma plays with|the zebra puzzle.
+Jacob plays with|the elephant puzzle.
+`,
+`
+isGirlStory=1
+Emma and Jacob|play the piano.
+Emma likes to|listen to "ABCs".
+Jason likes to listen to|"Twinkle, Twinkle, little star".
+They also like to|listen to the metronome.
+`,
 ];
