@@ -115,4 +115,10 @@ They see a pony|in the playground.
 They pat the pony.
 They say goodbye|to the pony.
 `,
+`
+Emma and Jacob|look out of|the window.
+Jacob sees|a FedEx truck.
+Emma sees|a UPS truck.
+Daddy sees|an ambulence.
+`,
 ];
