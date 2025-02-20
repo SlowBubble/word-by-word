@@ -116,9 +116,16 @@ They pat the pony.
 They say goodbye|to the pony.
 `,
 `
+isGirlStory=1
 Emma and Jacob|look out of|the window.
 Jacob sees|a FedEx truck.
 Emma sees|a UPS truck.
 Daddy sees|an ambulence.
+`,
+`
+Emma and Jacob|see a truck outside.
+Jacob runs to Daddy|and says,|"USPS!".
+Daddy looks out|of the window.
+"Wow!|It really is|a USPS truck!"|says Daddy.
 `,
 ];
