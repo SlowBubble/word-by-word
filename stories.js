@@ -128,4 +128,11 @@ Jacob runs to Daddy|and says,|"USPS!".
 Daddy looks out|of the window.
 "Wow!|It really is|a USPS truck!"|says Daddy.
 `,
+`
+isGirlStory=1
+It is|Emma's birthday.
+Mommy makes Emma|a chocolate birthday cake.
+Emma and Jacob|eat the birthday cake.
+Everyone sings|"Happy Birthday"|to Emma.
+`,
 ];
