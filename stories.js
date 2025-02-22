@@ -135,4 +135,10 @@ Mommy makes Emma|a chocolate birthday cake.
 Emma and Jacob|eat the birthday cake.
 Everyone sings|"Happy Birthday"|to Emma.
 `,
+`
+Jacob and Emma|go to the icy schoolyard.
+They walk on|some ice.
+Jacob slips|and falls on the ice.
+He starts to bleed.
+`,
 ];
