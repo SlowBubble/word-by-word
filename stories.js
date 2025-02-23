@@ -142,6 +142,13 @@ Jacob slips|and falls on the ice.
 He starts to bleed.
 `,
 `
+isGirlStory=1
+Jacob and Emma|go to the icy schoolyard.
+Emma walks on|the ice.
+Emma slips|and falls on the ice.
+Her pants are wet.
+`,
+`
 Tom asks,|"How can I be successful?"
 Daddy says,|"You need to|have a contrariant idea."
 "And you need to|carry out the idea."
