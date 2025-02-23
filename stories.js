@@ -78,7 +78,7 @@ And they play|in the game room.
 `,
 `
 isGirlStory=1
-Auntie Sophia|visits Emmy and Jason.
+Auntie Sophia|visits Emma and Jacob.
 She gives Jacob|an apple.
 She gives Emma|an orange.
 Emma says|thank you.
@@ -141,4 +141,9 @@ They walk on|some ice.
 Jacob slips|and falls on the ice.
 He starts to bleed.
 `,
+`
+Daddy asks,|"Do you know|how to be successful?"
+"First, you need to|have a contrariant idea."
+"Second, you need to|invest yourself|in the idea."
+"Third, your idea needs to|become useful."
 ];
