@@ -142,9 +142,9 @@ Jacob slips|and falls on the ice.
 He starts to bleed.
 `,
 `
-Daddy asks,|"Do you know|how to be successful?"
-"First, you need to|have a contrariant idea."
-"Second, you need to|invest yourself|in the idea."
-"Third, your idea needs to|become useful."
+Tom asks,|"How can I be successful?"
+Daddy says,|"You need to|have a contrariant idea."
+"And you need to|carry out the idea."
+"And your idea needs to|become useful."
 `,
 ];
