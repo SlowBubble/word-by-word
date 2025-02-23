@@ -145,6 +145,6 @@ He starts to bleed.
 Tom asks,|"How can I be successful?"
 Daddy says,|"You need to|have a contrariant idea."
 "And you need to|carry out the idea."
-"And your idea needs to|become useful."
+"And you need to|tweak the idea until|it becomes useful."
 `,
 ];
