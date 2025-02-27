@@ -124,7 +124,7 @@ Daddy sees|an ambulence.
 `,
 `
 Emma and Jacob|see a truck outside.
-Jacob runs to Daddy|and says,|"USPS!".
+Jacob runs to Daddy|and says,|"U.S.P.S.!".
 Daddy looks out|of the window.
 "Wow!|It really is|a USPS truck!"|says Daddy.
 `,
@@ -149,7 +149,7 @@ Emma slips|and falls on the ice.
 Her pants are wet.
 `,
 `
-Tom asks,|"How can I be successful?"
+Chucky asks,|"How can I be successful?"
 Daddy says,|"You need to|have a contrariant idea."
 "And you need to|carry out the idea."
 "And you need to|tweak the idea until|it becomes useful."
