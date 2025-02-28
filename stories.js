@@ -2,7 +2,7 @@
 export const stories = [
 `
 Jacob loves|his scooter.
-He rides the scooter|to the schoolyard.
+He rides the scooter|along the sidewalk.
 He rides the scooter|around the schoolyard.
 And he rides the scooter|home.
 `,
@@ -15,7 +15,7 @@ Daddy puts Mr. Lion|into the toy box.
 `,
 `
 Jacob climbs up|the ladder.
-Emma climbs up|the helix.
+Emma climbs up|the spiral staircase.
 Jacob goes down|the slide.
 Emma follows Jacob|down the slide.
 `,
@@ -49,7 +49,7 @@ Jacob starts to cry.
 Emma and Daddy|ride the scooter.
 Jacob and Mommy|ride the bike.
 They meet|at Harvard Yard.
-They ride|on the see-saw.
+They ride the see-saw.
 `,
 `
 Jacob sees a dinosaur|on the park bench.
@@ -97,16 +97,16 @@ Emma says hello|to her teachers.
 Emma says hello|to her friends.
 `,
 `
-Emma plays with|the octopus puzzle.
-Jacob plays with|the seahorse puzzle.
-Emma plays with|the zebra puzzle.
-Jacob plays with|the elephant puzzle.
+Emma plays with|the turtle puzzle.
+Jacob plays with|the hippo puzzle.
+Emma plays with|the snail puzzle.
+Jacob plays with|the whale puzzle.
 `,
 `
 isGirlStory=1
 Emma and Jacob|play the piano.
 Emma likes to|listen to "ABCs".
-Jacob likes to listen to|"Twinkle, Twinkle, little star".
+Jacob likes to listen to|"Twinkle Twinkle Little Star".
 They also like to|listen to the metronome.
 `,
 `
@@ -124,7 +124,7 @@ Daddy sees|an ambulence.
 `,
 `
 Emma and Jacob|see a truck outside.
-Jacob runs to Daddy|and says,|"U.S.P.S.!".
+Jacob runs to Daddy|and says,|"U S P S!".
 Daddy looks out|of the window.
 "Wow!|It really is|a USPS truck!"|says Daddy.
 `,
@@ -150,8 +150,8 @@ Her pants are wet.
 `,
 `
 Chucky asks,|"How can I be successful?"
-Daddy says,|"You need to|have a contrariant idea."
+Daddy says,|"You need to|think of an idea."
 "And you need to|carry out the idea."
-"And you need to|tweak the idea until|it becomes useful."
+"And you need to|tweak the idea|until it becomes useful."
 `,
 ];
