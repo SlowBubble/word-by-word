@@ -149,6 +149,16 @@ Emma slips|and falls on the ice.
 Her pants are wet.
 `,
 `
+Two little pigs|move out of|their Mommy’s house.
+Emma builds a house|with straws.
+Jacob builds a house|with red bricks.
+The next day,|a wolf comes|looking for food.
+The wolf blows away|the straw house.
+Emma runs into Jacob’s house|for shelter.
+The wolf blows on|the red brick house,|but the house stands strong.
+The wolf goes elsewhere|to look for food.
+`,
+`
 Chucky asks,|"How can I be successful?"
 Daddy says,|"You need to|think of an idea."
 "And you need to|carry out the idea."
