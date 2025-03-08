@@ -21,9 +21,9 @@ Emma follows Jacob|down the slide.
 `,
 `
 isGirlStory=1
-Emma and Jacob|want to|go outside.
-Daddy brings Emma|outside.
-Mommy brings Jacob|outside.
+Emma and Jacob|want to go outside.
+Daddy brings Emma outside.
+Mommy brings Jacob outside.
 They meet|in the playground.
 `,
 `
@@ -124,13 +124,13 @@ Daddy sees|an ambulence.
 `,
 `
 Emma and Jacob|see a truck outside.
-Jacob runs to Daddy|and says,|"U S P S!".
+Jacob runs to Daddy and says,|"U S P S!"
 Daddy looks out|of the window.
 "Wow!|It really is|a USPS truck!"|says Daddy.
 `,
 `
 isGirlStory=1
-It is|Emma's birthday.
+It is Emma's birthday.
 Mommy makes Emma|a chocolate birthday cake.
 Emma and Jacob|eat the birthday cake.
 Everyone sings|"Happy Birthday"|to Emma.
@@ -160,8 +160,8 @@ The wolf goes elsewhere|to look for food.
 `,
 `
 Chucky asks,|"How can I be successful?"
-Daddy says,|"You need to|think of an idea."
+Daddy says,|"You need to think of an idea."
 "And you need to|carry out the idea."
-"And you need to|tweak the idea|until it becomes useful."
+"And you need to tweak the idea|until it becomes useful."
 `,
 ];
